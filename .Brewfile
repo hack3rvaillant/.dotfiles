@@ -81,6 +81,8 @@ brew "stow"
 brew "tig"
 # JavaScript package manager
 brew "yarn"
+# Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
 # Automated testing of webapps for Google Chrome
 cask "chromedriver"
 cask "font-fira-code"
