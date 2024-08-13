@@ -1,0 +1,23 @@
+# My dotfiles
+
+This repo is an attempt to have a configuration that is
+- portable between multiple macs
+- consistent
+- recoverable
+- easy to maintain
+- customizable
+
+## Homebrew
+This relies heavily on Homebrew as the main Mac Os package manager
+```sh
+brew bundle dump
+```
+Is the command I used to generate a  `Brewfile`
+
+```sh
+brew bundle --file Brewfile
+```
+is used to install many apps and cli tools at once
+
+
+##
