@@ -1,0 +1,22 @@
+alias aliases="$EDITOR ~/.aliases && source ~/.aliases"
+
+alias bi="bundle install"
+alias be="bundle exec"
+
+alias yi="yarn install"
+
+alias rdbm="bundle exec rails db:migrate"
+alias rdbr="bundle exec rails db:rollback"
+
+alias zz="lazygit"
+alias nv="nvim ."
+
+alias gpuo="git rev-parse --abbrev-ref HEAD | xargs  git push -u origin"
+alias gpf="git push --force-with-lease"
+
+alias upfull="cp ~/projects/lifen/lifen-core-apps-backend/.user_uuid . && bin/update && git co master && git pull && git co -; $EDITOR ."
+alias up="cp ~/projects/lifen/lifen-core-apps-backend/.user_uuid . && git co master && git pull && git co - && git rebase master; $EDITOR ."
+
+alias prw="gh pr view -w"
+alias prc="gh pr create --draft"
+alias clr="clear"
