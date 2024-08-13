@@ -198,24 +198,3 @@ gsuo() {
   git fetch
   git branch --set-upstream-to="origin/${current_branch} ${current_branch}" || git push -u origin ${current_branch}
 }
-
-jira() {
-    local jira_base_url="hhttps://honestica.atlassian.net/jira/software/c/projects/SEDEX/boards/339browse"
-
-    # Get the current git branch name
-    local branch_name
-    branch_name=$(git rev-parse --abbrev-ref HEAD)
-
-    # Construct the Jira search URL with the branch name
-    local search_url="${jira_base_url}/${branch_name}"
-
-    # Open the URL in the default browser
-    if command -v xdg-open &>/dev/null; then
-        xdg-open "$search_url"
-    elif command -v open &>/dev/null; then
-        open "$search_url"
-    else
-        echo "Unable to detect the default browser."
-        echo "You can manually open the following URL in your browser: $search_url"
-    fi
-}
