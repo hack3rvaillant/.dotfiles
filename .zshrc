@@ -1,8 +1,10 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=./exe:$PATH
+export PATH=/usr/local/bin/rbenv:/Users/hack3r_vaillant/.rbenv/shims:$PATH
+export PATH=/usr/local/bin/chromedriver:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="/Users/hack3r_vaillant/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -23,13 +25,14 @@ ZSH_THEME="robbyrussell"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+# export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -44,9 +47,8 @@ ZSH_THEME="robbyrussell"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
+# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -70,7 +72,9 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rails ruby)
+plugins=(
+  git
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,110 +95,45 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# export EDITOR="NANO"
+# Set VS Code Insiders as default code editor
+export EDITOR="code -w"
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-export EDITOR="nvim"
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Apple mac bugs fixes
-export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-export PGGSSENCMODE="disable"
-
-#rbenv
-eval "$(rbenv init - zsh)"
-
-# Import aliases from ~/.aliases file
-if [ -f ~/.aliases ]; then
-  source ~/.aliases
-fi
-
-eval "$(pyenv init --path)"
+source ~/.aliases
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completionexport
-export PATH=/Users/emmanuel.louisygabri/bin:$PATH
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-eval "$(pyenv init --path)"
 
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completionexport
-export PATH=/Users/emmanuel.louisygabri/bin:$PATH
-
-# Worktree switcher
-wts() {
-  if [ -z "$1" ]
-  then
-    echo "No worktree name provided"
-    return 1
-  fi
-
-  worktree_path=$(git worktree list | grep $1 | awk '{print $1}')
-
-  if [ -z "$worktree_path" ]
-  then
-    echo "Worktree $1 not found"
-    return 1
-  fi
-
-  cd $worktree_path
+function promote_lyanne() {
+  heroku pipelines:promote -a lyanne-staging -t lyanne
 }
 
-wtr() {
-  git worktree remove -f
+function rrg() {
+  arg1=$1
+  rails routes | grep $arg1
+}
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+
+function gcmsg() {
+  arg1=$1
+  git commit -m $arg1
 }
 
-wtl() {
-  git worktree list
+function gaap() {
+  git add -p && gst
 }
-wta() {
-  if [ -z "$1" ]
-  then
-    echo "No worktree name provided"
-    return 1
-  fi
+export PATH="/usr/local/opt/postgresql@13/bin:$PATH"
 
-  git worktree add -b "$1" "$1"
-  wts "$1"
-}
-
-wtaa() {
-  if [ -z "$1" ]; then
-    echo "Usage: wtaa <worktree_name>"
-    return 1
-  fi
-
-  # Check if worktree already exists
-  if git worktree list | grep -q "$1"; then
-    echo "Worktree '$1' already exists"
-    return 1
-  fi
-
-  # Create worktree
-  git worktree add -b "$1" "$1"
-
-  # Check if branch already exists on remote
-  if git ls-remote --exit-code --heads origin "$1" >/dev/null 2>&1; then
-    echo "Branch '$1' already exists on remote 'origin'"
-
-    # Change into the worktree
-    cd "$1" || return 1
-    # Set upstream and pull from remote
-    git branch --set-upstream-to=origin/"$1" "$1"
-    git pull origin "$1"
-
-    return 0
-  fi
-
-  git worktree add -b "$1" "$1"
-  wts "$1"
-}
-
-gsuo() {
-  current_branch=$(git branch --show-current)
-  git fetch
-  git branch --set-upstream-to="origin/${current_branch} ${current_branch}" || git push -u origin ${current_branch}
-}
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/WhatWeb/whatweb:$PATH"
