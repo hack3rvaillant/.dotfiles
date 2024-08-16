@@ -7,8 +7,15 @@ This repo is an attempt to have a configuration that is
 - easy to maintain
 - customizable
 
+The dotfiles are store in a git repository and kept in sync with the local configuration thanks to symbolic links.
+The symbolic links are managed with stow
+
+## GNU Stow
+Here is a video that covers the basics of using GNU stow way better than I could do so go there to learn more about this fantastic tool -> https://www.youtube.com/watch?v=y6XCebnB9gs&t=10s
+
 ## Homebrew
-This relies heavily on Homebrew as the main Mac Os package manager
+This config relies heavily on Homebrew as the main Mac Os package manager to install binaries AND apps with a UI.
+
 ```sh
 brew bundle dump
 ```
@@ -18,6 +25,3 @@ Is the command I used to generate a  `Brewfile`
 brew bundle --file Brewfile
 ```
 is used to install many apps and cli tools at once
-
-
-##
