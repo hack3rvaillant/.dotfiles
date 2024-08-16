@@ -1,33 +1,50 @@
-alias a="arch -x86_64"
-alias ibrew="arch -x86_64 brew"
+alias aliases="code ~/.aliases"
+alias srca="source ~/.aliases"
+
+# CLI
+alias clr="clear"
+
+# Bundler
+alias bi="bundle install"
+alias be="bundle exec"
+
+# Rails
 alias rc="bundle exec rails console"
 alias rs="bundle exec rails server"
 alias rdbm="bundle exec rails db:migrate"
-alias rdbs="bundle exec rails db:migrate:status"
 alias rdbr="bundle exec rails db:rollback"
-alias bi="bundle install"
-alias yi="yarn install"
-alias grbi="git rebase -i"
-alias aliases="code ~/.aliases"
-alias activate_python="source ~/code/pyenvs/py38/bin/activate"
-alias hmigrate="heroku run rails db:migrate"
-alias hseed="heroku run rails db:seed"
+alias rdbs="bundle exec rails db:migrate:status"
 alias seed="rails db:seed"
-alias migrate="rails db:migrate"
+
+# Yarn
+alias yi="yarn install"
+
+# Lazygit 💪
+alias zz="lazygit"
+
+# Git
+alias grbi="git rebase -i"
 alias gap="git add -p"
 alias gpf="git push -f"
 alias gaa="git add ."
-alias rebase="git co qa-admin-v2 && git pull && git co - && git rebase -i qa-admin-v2"
 alias sweep="git branch --list branch --merged qa-admin-v2 | grep -v 'qa-admin-v2$' | xargs git branch -d && git remote prune origin"
-alias server="overmind start -c Procfile.dev"
-alias debug="overmind connect web"
-alias lint="standardrb --fix && git add -p"
 alias amend="git commit --amend"
 alias gs="git stash"
 alias gsp="git stash pop"
-alias clr="clear"
-alias drop="DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rails db:drop db:create"
-alias cpr="gh pr create"
-alias pc="production console"
-alias python='python3'
-alias zz="lazygit"
+
+# GitHub
+alias prc="gh pr create --draft"
+
+# Lint
+alias lint="standardrb --fix && git add -p"
+
+# Heroku
+alias hmigrate="heroku run rails db:migrate"
+alias hseed="heroku run rails db:seed"
+
+# Overmind
+alias server="overmind start -c Procfile.dev"
+alias debug="overmind connect web"
+
+# Neovim
+alias nv="nvim ."
