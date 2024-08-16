@@ -137,3 +137,10 @@ export PATH="/usr/local/opt/postgresql@13/bin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/WhatWeb/whatweb:$PATH"
+
+
+# Switch to an arm64e shell by default
+if [ `machine` != arm64e ]; then
+    echo 'Execing arm64 shell'
+    exec arch -arm64 zsh
+fi
