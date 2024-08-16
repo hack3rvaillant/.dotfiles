@@ -1,5 +1,4 @@
 tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
 tap "homebrew/services"
 # Image format providing lossless and lossy compression for web images
 brew "webp"
