@@ -8,8 +8,6 @@ brew "jpeg-xl"
 brew "aom"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Enables you to reproduce the CircleCI environment locally
-brew "circleci"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
 # Isolated development environments using Docker
@@ -62,8 +60,6 @@ brew "overmind"
 brew "pkg-config"
 # Object-relational database system
 brew "postgresql@16", restart_service: true
-# Service monitoring system and time series database
-brew "prometheus"
 # Python version management
 brew "pyenv"
 # Install various Ruby versions and implementations
@@ -89,8 +85,6 @@ cask "font-fira-code"
 cask "google-chrome"
 # Keyboard customiser
 cask "karabiner-elements"
-# Create mock APIs in seconds
-cask "mockoon"
 # App to write, plan, collaborate, and get organised
 cask "notion"
 # Open-source software for live streaming and screen recording
