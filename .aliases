@@ -22,21 +22,24 @@ alias yi="yarn install"
 # Lazygit 💪
 alias zz="lazygit"
 
+# Yazi 👀
+alias yy="yazi"
+
 # Git
 alias grbi="git rebase -i"
 alias gap="git add -p"
 alias gpf="git push -f"
 alias gaa="git add ."
-alias sweep="git branch --list branch --merged qa-admin-v2 | grep -v 'qa-admin-v2$' | xargs git branch -d && git remote prune origin"
 alias amend="git commit --amend"
 alias gs="git stash"
 alias gsp="git stash pop"
 
 # GitHub
 alias prc="gh pr create --draft"
+alias prw="gh pr view -w"
 
 # Lint
-alias lint="standardrb --fix && git add -p"
+alias lint="bin/codestyle --fix"
 
 # Heroku
 alias hmigrate="heroku run rails db:migrate"
